@@ -19,21 +19,19 @@ namespace PB.WebAPI.Controllers
         }
 
         [HttpGet]
-        public virtual async Task<ActionResult<IEnumerable<Article>>> Get()
+        public virtual async Task<ActionResult<IEnumerable<TModel>>> Get()
         {
             var models = await Repo.ReadListAsync();
             return Ok(models);
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<Article>> Get(long id)
+        public virtual async Task<ActionResult<TModel>> Get(long id)
         {
             var model = await Repo.ReadAsync(id);
             return Ok(model);
         }
 
-        // POST api/values
         [HttpPost]
         public virtual async Task<ActionResult> Post([FromBody] TModel value)
         {
@@ -41,7 +39,6 @@ namespace PB.WebAPI.Controllers
             return Ok();
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public virtual async Task<ActionResult> Put(long id, [FromBody] TModel value)
         {
@@ -50,7 +47,6 @@ namespace PB.WebAPI.Controllers
             return Ok();
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public virtual async Task<ActionResult> Delete(long id)
         {
