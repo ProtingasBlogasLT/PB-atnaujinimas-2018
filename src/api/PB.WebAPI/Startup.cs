@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -93,6 +96,46 @@ namespace PB.WebAPI
             return driver;
         }
 
+        public class SecurityHeadersPolicy
+        {
+            public IDictionary<string, string> SetHeaders { get; }
+                = new Dictionary<string, string>();
+
+            public ISet<string> RemoveHeaders { get; }
+                = new HashSet<string>();
+        }
+
+
+        public class SecurityHeadersMiddleware
+        {
+            private readonly RequestDelegate _next;
+            private readonly SecurityHeadersPolicy _policy;
+
+            public SecurityHeadersMiddleware(RequestDelegate next, SecurityHeadersPolicy policy)
+            {
+                _next = next;
+                _policy = policy;
+            }
+
+            public async Task Invoke(HttpContext context)
+            {
+                IHeaderDictionary headers = context.Response.Headers;
+
+                foreach (var headerValuePair in _policy.SetHeaders)
+                {
+                    headers[headerValuePair.Key] = headerValuePair.Value;
+                }
+
+                foreach (var header in _policy.RemoveHeaders)
+                {
+                    headers.Remove(header);
+                }
+
+                await _next(context);
+            }
+        }
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
@@ -102,12 +145,16 @@ namespace PB.WebAPI
             }
 
             app.UseAuthentication();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             app.UseMvc();
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            //app.UseOptions();
+            /*app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+                context.Response.Headers.Add("Access-Control-Allow-Headers", new[] { "*" });
+                context.Response.Headers.Add("Access-Control-Allow-Methods", new[] { "*" });
+                await next();
+            });*/
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
