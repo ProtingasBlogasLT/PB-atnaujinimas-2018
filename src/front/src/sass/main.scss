@@ -18,11 +18,19 @@ body {
 }
 
 .main-page-content {
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
+
     .sidebar {
         min-height: 100vh;
         background: white;
         border-right: 1px solid $borderColor;
         padding: 0;
+
+        @media screen and (max-width: 768px) {
+            min-height: 0;
+        }
 
         .logo {
             height: 100px;
