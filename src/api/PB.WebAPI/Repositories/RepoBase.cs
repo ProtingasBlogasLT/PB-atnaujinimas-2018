@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Neo4j.Driver.V1;
+using PB.WebAPI.ExtensionMethods;
 using PB.WebAPI.Models;
 
 namespace PB.WebAPI.Repositories
@@ -12,7 +12,7 @@ namespace PB.WebAPI.Repositories
     {
         protected IDriver Driver { get; }
 
-        public RepoBase(IDriver driver)
+        public RepoBase([NotNull]IDriver driver)
         {
             Driver = driver;
         }

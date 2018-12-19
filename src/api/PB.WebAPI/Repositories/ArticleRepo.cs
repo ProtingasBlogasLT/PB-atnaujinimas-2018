@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Neo4j.Driver.V1;
 using PB.WebAPI.Models;
 
@@ -9,7 +10,7 @@ namespace PB.WebAPI.Repositories
     {
         private const string ArticleRecord = "article";
 
-        public ArticlesRepo(IDriver driver) : base(driver)
+        public ArticlesRepo([NotNull]IDriver driver) : base(driver)
         {
         }
 

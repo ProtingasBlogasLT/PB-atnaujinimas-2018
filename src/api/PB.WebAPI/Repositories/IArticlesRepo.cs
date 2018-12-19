@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using PB.WebAPI.Models;
+﻿using PB.WebAPI.Models;
 
 namespace PB.WebAPI.Repositories
 {

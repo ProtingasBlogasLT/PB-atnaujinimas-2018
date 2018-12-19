@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Neo4j.Driver.V1;
+﻿using Neo4j.Driver.V1;
 using Newtonsoft.Json;
 using PB.WebAPI.Models;
 
-namespace PB.WebAPI
+namespace PB.WebAPI.ExtensionMethods
 {
     public static class NodeExtensionMethods
     {

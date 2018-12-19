@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Neo4j.Driver.V1;
 using PB.WebAPI.Models;
 
@@ -11,7 +11,7 @@ namespace PB.WebAPI.Repositories
     {
         private const string UserRecord = "user";
 
-        public UsersRepo(IDriver driver) : base(driver)
+        public UsersRepo([NotNull]IDriver driver) : base(driver)
         {
         }
 

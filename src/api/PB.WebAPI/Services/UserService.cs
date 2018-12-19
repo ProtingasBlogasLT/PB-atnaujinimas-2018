@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+﻿using System.Threading.Tasks;
+using JetBrains.Annotations;
 using PB.WebAPI.Models;
 using PB.WebAPI.Repositories;
 
@@ -18,7 +11,7 @@ namespace PB.WebAPI.Services
         private IUsersRepo UsersRepo { get; }
         private IPasswordService PasswordService { get; }
 
-        public UserService(ITokenService tokenService, IUsersRepo usersRepo, IPasswordService passwordService)
+        public UserService([NotNull]ITokenService tokenService, [NotNull]IUsersRepo usersRepo, [NotNull]IPasswordService passwordService)
         {
             TokenService = tokenService;
             UsersRepo = usersRepo;

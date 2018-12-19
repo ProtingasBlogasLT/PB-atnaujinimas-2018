@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PB.WebAPI.Models;
@@ -16,7 +14,7 @@ namespace PB.WebAPI.Controllers
     {
         private IUserService UserService { get; }
 
-        public UsersController(IUserService userService)
+        public UsersController([NotNull]IUserService userService)
         {
             UserService = userService;
         }

@@ -14,7 +14,7 @@ using PB.WebAPI.Repositories;
 namespace PB.WebAPI.Tests.Controllers
 {
     [TestFixture]
-    class ArticlesControllerTests
+    class ArticlesControllerTes
     {
         private IList<Article> Articles { get; set; }
         private Mock<IArticlesRepo> RepoMock { get; set; }

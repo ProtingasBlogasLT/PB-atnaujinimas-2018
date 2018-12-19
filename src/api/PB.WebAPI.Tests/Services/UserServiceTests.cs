@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using PB.WebAPI.Models;
 using PB.WebAPI.Repositories;
 using PB.WebAPI.Services;
 
-namespace PB.WebAPI.Tests
+namespace PB.WebAPI.Tests.Services
 {
     [TestFixture]
     public class UserServiceTests
