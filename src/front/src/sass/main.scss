@@ -1,0 +1,87 @@
+$backgroundColor: #f3f5fa;
+
+$borderColor: #e1e4eb;
+
+$primaryColor: #3039ea;
+
+$lightGreyColor: #f8f9fa;
+
+$primaryTextColor: #1b1b1b;
+$secondaryTextColor: #919191;
+
+body {
+    background: $backgroundColor;
+}
+
+.main-page-content {
+    .sidebar {
+        min-height: 100vh;
+        background: white;
+        border-right: 1px solid $borderColor;
+        padding: 0;
+
+        .logo {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .content-wrapper {
+        padding: 0;
+
+        .user-row {
+            border-bottom: 1px solid $borderColor;
+            padding: 1em;
+            text-align: right;
+            background: white;
+
+            ul {
+                padding-left: 0;
+                margin-bottom: 0;
+
+                li {
+                    display: inline-block;
+                    margin-left: 1em;
+
+                    a {
+                        color: $primaryTextColor;
+                        font-size: 0.75em;
+
+                        &:hover {
+                            color: $primaryColor;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content {
+            padding: 2em;
+
+            .block {
+                background: white;
+                padding: 1em 2em;
+            }
+        }
+    }
+}
+
+.list-group {
+    .list-group-item {
+        border: none;
+        border-right: 2px solid transparent;
+        color: $primaryTextColor;
+        transition: all 0.2s;
+        padding: 1em 2em;
+
+        &.active,
+        &:hover {
+            color: $primaryColor;
+            background: #f3f4fd;
+            border-right-color: $primaryColor;
+        }
+    }
+}
