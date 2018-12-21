@@ -12,6 +12,7 @@ namespace PB.WebAPI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls(urls: "http://*:5000")
                 .UseStartup<Startup>();
     }
 }
